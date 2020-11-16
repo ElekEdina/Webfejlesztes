@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        /*
+A google drive területen található a települések.txt és a városok.txt, a továbbiakban ezeket használjuk kiinduló adatnak.
+A feladatok megoldásánál használja a nyíl operátort és a tömbkezelő függvényeket!*/
+
+/* 1. feladat
+A települések között "Berettyóújfalu" hanyadik helyen van? */
+var
+strTelep="Álmosd,Ártánd,Bagamér,Bakonszeg,Balmazújváros,Báránd,Bedő,Berekböszörmény,Berettyóújfalu,Bihardancsháza,Biharkeresztes,Biharnagybajom,Bihartorda,Bocskaikert,Bojt,Csökmő,Darvas,Debrecen,Derecske,Ebes,Egyek,Esztár,Folyás,Földes,Furta,Fülöp,Gáborján,Görbeháza,Hajdúbagos,Hajdúböszörmény,Hajdúdorog,Hajdúhadház,Hajdúnánás,Hajdúsámson,Hajdúszoboszló,Hajdúszovát,Hencida,Hortobágy,Hosszúpályi,Kaba,Kismarja,Kokad,Komádi,Konyár,Körösszakál,Körösszegapáti,Létavértes,Magyarhomorog,Mezőpeterd,Mezősas,Mikepércs,Monostorpályi,Nádudvar,Nagyhegyes,Nagykereki,Nagyrábé,Nyírábrány,Nyíracsád,Nyíradony,Nyírmártonfalva,Pocsaj,Polgár,Püspökladány,Sáp,Sáránd,Sárrétudvari,Szentpéterszeg,Szerep,Téglás,Tépe,Tetétlen,Tiszacsege,Tiszagyulaháza,Told,Újiráz,Újléta,Újszentmargita,Újtikos,Vámospércs,Váncsod,Vekerd,Zsáka";
+
+var arrTelep= strTelep.split(','); 
+
+var soBer = arrTelep.indexOf('Berettyóújfalu') + 1;
+
+document.write("1. feladat.  A települések között Berettyóújfalu hányadik helyen van?" +"  Eredmény: " + soBer);
+
+document.write("<br/ >");
+
+/* 2. feladat
+A települések között "Lánycsók" hanyadik helyen van? */
+
+var soBer = arrTelep.indexOf('Lánycsók') + 1;
+
+document.write("2. feladat.  A települések között Lánycsók hanyadik helyen van?" +"  Eredmény: "  + soBer);
+
+document.write("<br/ >");
+
+/* 3. feladat
+Mennyi a legrövidebb település név? */
+
+var minkar = Number.MAX_VALUE;
+
+arrTelep.forEach((item)=>{(item.length < minkar) ? minkar = item.length : minkar = minkar; return minkar;});
+
+document.write("3. feladat.  Mennyi a legrövidebb település név?" +"  Eredmény: "  + minkar);
+
+document.write("<br/ >");
+
+//forach item -> funkció a => ezzel adjuk át a tömbelemet az utána lévő függvénynek
+
+/* 4. feladat
+Mennyi a leghosszabb település név? */
+
+var maxkar = Number.MIN_VALUE;
+
+arrTelep.forEach((item)=>{(item.length > maxkar) ? maxkar = item.length : maxkar = maxkar; return maxkar;});
+
+document.write("4. feladat.  Mennyi a leghosszabb település név?" +"  Eredmény: "  + maxkar);
+
+document.write("<br/ >");
+
+/* 5. feladat
+Írassa ki a legrövidebb nevű településeket! */
+
+arrTelep.forEach((item)=>{(item.length < minkar) ? minkar = item.length : minkar = minkar; return minkar;});
+
+arrTelep.forEach((item)=>{if (item.length == minkar) document.write("5. feladat.  Írassa ki a legrövidebb nevű településeket!" +"  Települések: "  + item);});
+
+document.write("<br/ >");
+
+/* 6. feladat
+Írassa ki a leghosszabb nevű településeket! */
+
+arrTelep.forEach((item)=>{(item.length > maxkar) ? maxkar = item.length : maxkar = maxkar; return maxkar;});
+document.write("6. feladat.  Írassa ki a leghosszabb nevű településeket!"+"Települések: ");
+arrTelep.forEach((item)=>{if (item.length == maxkar) document.write(item + ", ");});
+
+document.write("<br/ >");
+
+/* 7. feladat
+Hozzon létre új tömböt a legrövidebb nevű településekből! */
+
+var minNames = arrTelep.filter((item)=>(item.length == minkar));
+
+document.write("7. feladat Hozzon létre új tömböt a legrövidebb nevű településekből!" +"  Új tömb: "  + minNames);
+
+document.write("<br/ >");
+
+/* 8. feladat
+Hozzon létre új tömböt a leghosszabb nevű településekből!*/
+
+var maxNames = arrTelep.filter((item)=>(item.length == maxkar));
+
+document.write("8. feladat Hozzon létre új tömböt a leghosszabb nevű településekből!" +"  Új tömb: "  + maxNames);
+
+document.write("<br/ >");
+
+/* 9. feladat
+A városok listából készítsen tömböt! */
+
+strVarosok = "Balmazújváros Berettyóújfalu Biharkeresztes Debrecen Derecske Hajdúböszörmény Hajdúdorog Hajdúhadház Hajdúnánás Hajdúsámson Hajdúszoboszló Kaba Komádi Létavértes Nádudvar Nyíradony Polgár Püspökladány Téglás Tiszacsege Vámospércs";
+
+arrVarosok = strVarosok.split(' ');
+
+document.write("9. feladat A városok listából készítsen tömböt!" +"  Új tömb: "  + strVarosok);
+
+document.write("<br/ >");
+
+/* 10. feladat
+Számolja meg, hogy a települések között hánynak a neve rövidebb mint 10 karakter és hánynak nem! */
+
+document.write("10. feladat Számolja meg, hogy a települések között hánynak a neve rövidebb mint 10 karakter és hánynak nem!");
+
+document.write("<br/ >");
+
+var telNev9 = arrTelep.reduce((prev, item) => {if (item.length <10) {return prev = prev +1;} return prev },0);
+
+document.write("  Rövidebb, mint 10 karakter: "  + telNev9);
+
+document.write("<br/ >");
+
+var telNev10 = arrTelep.reduce((prev, item) => { if (item.length > 9) {return ++prev} return prev },0);
+
+document.write("  Hosszabb, mint 10 karakter: "  + telNev10);
+
+document.write("<br/ >");
+
+/*a prev az egy gyűjtőmező, nulláról indul, ebbe lehet számolni a feltétel szerint
+a ,0) a végén fontos, a kezdeti értékét tudom vele beállitani a prev-nek*/
+
+/* 11. feladat
+A települések tömbből szedje ki a városokat! */
+
+arrTelep.forEach((item, index, arr) =>{if (arrVarosok.find((item2) => (item == item2))) delete arr[index];});
+
+document.write("11. feladat A települések tömbből szedje ki a városokat!" +"  Új tömb: "  + arrTelep);
+
+document.write("<br/ >");
+
+/* 12. feladat
+A településekből készitsen listát, ahol az elemek elválasztója:"; "! */
+
+var lstTelep = arrTelep.join('; ');
+
+document.write("12. feladat A településekből készitsen listát, ahol az elemek elválasztója pontosvessző!" +"  Eredmény: "  + lstTelep );
+
+document.write("<br/ >");
+
+/* 13. feladat
+Ellenőrizze, hogy minden településnév hosszabb mint 3 karakter! */
+
+var lenName = arrTelep.every((item) => (item.length > 3));
+
+document.write("13. feladat Ellenőrizze, hogy minden településnév hosszabb mint 3 karakter!" +"  Eredmény: "  + lenName );
+
+document.write("<br/ >");
+
+/* 14. feladat
+Nézze meg, hogy van e olyan település, melynek a neve legalább 15 karakter! */
+
+var name15 = arrTelep.some((item) => (item.length > 14));
+
+document.write("14. feladat Nézze meg, hogy van e olyan település, melynek a neve legalább 15 karakter!" +"  Eredmény: "  + name15 );
+
+document.write("<br/ >");
+
+/* 15. feladat
+Készítsen új tömböt azokból a településekből, amelyekben nem szerepel magyar ékezetes karakter! */
+
+var engTelep = arrTelep.filter((item) => {var regexp=/^\w*$/ig; return(regexp.test(item))});
+
+document.write("15. feladat Készítsen új tömböt azokból a településekből, amelyekben nem szerepel magyar ékezetes karakter!" +"  Új tömb: "  + engTelep );
+
+document.write("<br/ >");
+
+</script>
+</head>
+<body>
+    
+</body>
+</html>
